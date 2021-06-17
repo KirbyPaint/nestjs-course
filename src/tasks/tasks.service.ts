@@ -11,8 +11,8 @@ import { User } from 'src/auth/user.entity';
 export class TasksService {
   constructor(
     @InjectRepository(TasksRepository)
-    private tasksRepository: TasksRepository
-  ) { }
+    private tasksRepository: TasksRepository,
+  ) {}
 
   getTasks(filterDto: GetTasksFilterDto, user: User): Promise<Task[]> {
     return this.tasksRepository.getTasks(filterDto, user);
@@ -43,7 +43,7 @@ export class TasksService {
   async updateTaskStatus(
     id: string,
     status: TaskStatus,
-    user: User
+    user: User,
   ): Promise<Task> {
     const task = await this.getTaskById(id, user);
 

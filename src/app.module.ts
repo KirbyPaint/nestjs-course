@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TasksModule } from './tasks/tasks.module';
-import { TypeOrmModule } from '@nestjs/typeorm'
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
@@ -14,9 +14,9 @@ import { AuthModule } from './auth/auth.module';
       password: 'postgres',
       database: 'task-management',
       autoLoadEntities: true,
-      synchronize: true
+      synchronize: true,
     }),
-    AuthModule
-  ]
+    AuthModule,
+  ],
 })
-export class AppModule { }
+export class AppModule {}

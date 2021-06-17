@@ -1,7 +1,10 @@
-import { ConflictException, InternalServerErrorException } from "@nestjs/common";
-import { EntityRepository, Repository } from "typeorm";
-import { AuthCredentialsDto } from "./dto/auth-credentials.dto";
-import { User } from "./user.entity";
+import {
+  ConflictException,
+  InternalServerErrorException,
+} from '@nestjs/common';
+import { EntityRepository, Repository } from 'typeorm';
+import { AuthCredentialsDto } from './dto/auth-credentials.dto';
+import { User } from './user.entity';
 import * as bcrypt from 'bcrypt';
 
 @EntityRepository(User)
@@ -18,12 +21,11 @@ export class UsersRepository extends Repository<User> {
 
     try {
       await this.save(user);
-    }
-    catch (error) {
-      if (error.code === '23505') { // Duplicate Username
+    } catch (error) {
+      if (error.code === '23505') {
+        // Duplicate Username
         throw new ConflictException('Username already exists');
-      }
-      else {
+      } else {
         throw new InternalServerErrorException();
       }
     }
